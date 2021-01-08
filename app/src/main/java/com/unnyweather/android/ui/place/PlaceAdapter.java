@@ -17,11 +17,11 @@ import com.unnyweather.android.logic.model.Place;
 import java.util.List;
 
 public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.ViewHolder> {
-    Fragment fragment;
+    PlaceFragment  fragment;
     List<Place> placeList;
 
-    public PlaceAdapter(Fragment fragment, List<Place> placeList) {
-        this.fragment = fragment;
+    public PlaceAdapter(PlaceFragment fragment, List<Place> placeList) {
+        this.fragment=fragment;
         this.placeList = placeList;
     }
 
@@ -38,6 +38,7 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.ViewHolder> 
             intent.putExtra("location_lat",place.getLocation().getLat());
             intent.putExtra("place_name",place.getName());
             fragment.startActivity(intent);
+            fragment.getActivity().finish();
         });
         return viewHolder;
     }
